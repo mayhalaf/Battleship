@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Battleship</title>
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+<body dir="rtl">
+    <div id="controls">
+        <label for="boardSize">בחר גודל לוח</label>
+        <select id="boardSize">
+            <option value="10">10x10</option>
+            <option value="11">11x11</option>
+            <option value="12">12x12</option>
+            <option value="13">13x13</option>
+            <option value="14">14x14</option>
+            <option value="15">15x15</option>
+        </select>
+        <br>
+        <label for="shipSize2">כמות ספינות בגודל 2:</label>
+        <input type="number" id="shipSize2" min="0" value="1">
+        <br>
+        <label for="shipSize3">כמות ספינות בגודל 3:</label>
+        <input type="number" id="shipSize3" min="0" value="1">
+        <br>
+        <label for="shipSize4">כמות ספינות בגודל 4:</label>
+        <input type="number" id="shipSize4" min="0" value="1">
+        <br>
+        <label for="shipSize5">כמות ספינות בגודל 5:</label>
+        <input type="number" id="shipSize5" min="0" value="1">
+        <br>
+        <button id="startButton">התחל משחק</button>
+        <div id="message"></div>
+    </div>
+    <script>
+            document.getElementById('startButton').addEventListener('click', function() {
+            const settings = {
+                boardSize: document.querySelector('#boardSize').value,
+                shipSizes: {
+                    2: document.querySelector('#shipSize2').value,
+                    3: document.querySelector('#shipSize3').value,
+                    4: document.querySelector('#shipSize4').value,
+                    5: document.querySelector('#shipSize5').value
+                    
+                }
+            };
+            localStorage.setItem('battleshipSettings', JSON.stringify(settings)); // משמשת לאחסון ההגדרות של המשחק -Local Storage בדפדפן.
+            window.location.href = 'game.html';
+        });
+
+    </script>
+</body>
+</html>
